@@ -24,7 +24,7 @@ import javafx.util.Duration;
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
 
         // Build Scene
 
@@ -103,19 +103,19 @@ public class Main extends Application {
         firstAnchorColorText.setFont(new Font("Arial", 17));
         firstAnchorColorText.setFill(Color.WHITE);
         AnchorPane.setLeftAnchor(firstAnchorColorText, 14.0);
-        AnchorPane.setTopAnchor(firstAnchorColorText, 80.0);
+        AnchorPane.setTopAnchor(firstAnchorColorText, 70.0);
 
         Text firstAnchorWidthText = new Text("Width:");
         firstAnchorWidthText.setFont(new Font("Arial", 17));
         firstAnchorWidthText.setFill(Color.WHITE);
         AnchorPane.setLeftAnchor(firstAnchorWidthText, 14.0);
-        AnchorPane.setTopAnchor(firstAnchorWidthText, 116.0);
+        AnchorPane.setTopAnchor(firstAnchorWidthText, 106.0);
 
         Text firstAnchorHeightText = new Text("Height:");
         firstAnchorHeightText.setFont(new Font("Arial", 17));
         firstAnchorHeightText.setFill(Color.WHITE);
         AnchorPane.setLeftAnchor(firstAnchorHeightText, 14.0);
-        AnchorPane.setTopAnchor(firstAnchorHeightText, 149.0);
+        AnchorPane.setTopAnchor(firstAnchorHeightText, 139.0);
 
         firstAnchor.getChildren().addAll(
                 firstAnchorTitleText,
@@ -135,19 +135,19 @@ public class Main extends Application {
         thirdAnchorColorText.setFont(new Font("Arial", 17));
         thirdAnchorColorText.setFill(Color.WHITE);
         AnchorPane.setLeftAnchor(thirdAnchorColorText, 14.0);
-        AnchorPane.setTopAnchor(thirdAnchorColorText, 80.0);
+        AnchorPane.setTopAnchor(thirdAnchorColorText, 70.0);
 
         Text thirdAnchorFontText = new Text("Font:");
         thirdAnchorFontText.setFont(new Font("Arial", 17));
         thirdAnchorFontText.setFill(Color.WHITE);
         AnchorPane.setLeftAnchor(thirdAnchorFontText, 14.0);
-        AnchorPane.setTopAnchor(thirdAnchorFontText, 116.0);
+        AnchorPane.setTopAnchor(thirdAnchorFontText, 106.0);
 
         Text thirdAnchorStyleText = new Text("Style:");
         thirdAnchorStyleText.setFont(new Font("Arial", 17));
         thirdAnchorStyleText.setFill(Color.WHITE);
         AnchorPane.setLeftAnchor(thirdAnchorStyleText, 14.0);
-        AnchorPane.setTopAnchor(thirdAnchorStyleText, 149.0);
+        AnchorPane.setTopAnchor(thirdAnchorStyleText, 139.0);
 
         thirdAnchor.getChildren().addAll(
                 thirdAnchorTitleText,
@@ -168,13 +168,13 @@ public class Main extends Application {
         fifthAnchorColorText.setFont(new Font("Arial", 17));
         fifthAnchorColorText.setFill(Color.WHITE);
         AnchorPane.setLeftAnchor(fifthAnchorColorText, 14.0);
-        AnchorPane.setTopAnchor(fifthAnchorColorText, 80.0);
+        AnchorPane.setTopAnchor(fifthAnchorColorText, 70.0);
 
         Text fifthAnchorRadiusText = new Text("Radius:");
         fifthAnchorRadiusText.setFont(new Font("Arial", 17));
         fifthAnchorRadiusText.setFill(Color.WHITE);
         AnchorPane.setLeftAnchor(fifthAnchorRadiusText, 14.0);
-        AnchorPane.setTopAnchor(fifthAnchorRadiusText, 116.0);
+        AnchorPane.setTopAnchor(fifthAnchorRadiusText, 106.0);
 
         fifthAnchor.getChildren().addAll(
                 fifthAnchorTitleText,
@@ -357,6 +357,7 @@ public class Main extends Application {
         // Adds circle to pane
         sixthAnchorFirstPane.getChildren().add(circle);
 
+        // Finish Scene
         Scene scene = new Scene(root, root.getPrefWidth(), root.getPrefHeight());
         primaryStage.setResizable(false);
         primaryStage.setScene(scene);
