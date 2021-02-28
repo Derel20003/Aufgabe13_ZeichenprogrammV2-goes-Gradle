@@ -97,7 +97,7 @@ public class Main extends Application {
         firstAnchorTitleText.setFont(new Font("Arial", 25));
         firstAnchorTitleText.setFill(Color.WHITE);
         AnchorPane.setLeftAnchor(firstAnchorTitleText, 96.0);
-        AnchorPane.setTopAnchor(firstAnchorTitleText, 37.0);
+        AnchorPane.setTopAnchor(firstAnchorTitleText, 17.0);
 
         Text firstAnchorColorText = new Text("Farbe:");
         firstAnchorColorText.setFont(new Font("Arial", 17));
@@ -129,7 +129,7 @@ public class Main extends Application {
         thirdAnchorTitleText.setFont(new Font("Arial", 25));
         thirdAnchorTitleText.setFill(Color.WHITE);
         AnchorPane.setLeftAnchor(thirdAnchorTitleText, 124.0);
-        AnchorPane.setTopAnchor(thirdAnchorTitleText, 37.0);
+        AnchorPane.setTopAnchor(thirdAnchorTitleText, 17.0);
 
         Text thirdAnchorColorText = new Text("Farbe:");
         thirdAnchorColorText.setFont(new Font("Arial", 17));
@@ -162,7 +162,7 @@ public class Main extends Application {
         fifthAnchorTitleText.setFont(new Font("Arial", 25));
         fifthAnchorTitleText.setFill(Color.WHITE);
         AnchorPane.setLeftAnchor(fifthAnchorTitleText, 120.0);
-        AnchorPane.setTopAnchor(fifthAnchorTitleText, 37.0);
+        AnchorPane.setTopAnchor(fifthAnchorTitleText, 17.0);
 
         Text fifthAnchorColorText = new Text("Farbe:");
         fifthAnchorColorText.setFont(new Font("Arial", 17));
@@ -182,11 +182,25 @@ public class Main extends Application {
                 fifthAnchorRadiusText
         );
 
-        // Main-Objects
+        // Second AnchorPane
+        Pane secondAnchorFirstPane = new Pane();
+        secondAnchorFirstPane.setPrefSize(299, 200);
+        secondAnchorFirstPane.setStyle("-fx-background-color: white;");
+        secondAnchor.getChildren().add(secondAnchorFirstPane);
 
-        // Rectangle
-        Pane rectBox;
-        AnchorPane rectMain;
+        // Fourth AnchorPane
+        Pane fourthAnchorFirstPane = new Pane();
+        fourthAnchorFirstPane.setPrefSize(299, 200);
+        fourthAnchorFirstPane.setStyle("-fx-background-color: white;");
+        fourthAnchor.getChildren().add(fourthAnchorFirstPane);
+
+        // Sixth AnchorPane
+        Pane sixthAnchorFirstPane = new Pane();
+        sixthAnchorFirstPane.setPrefSize(299, 200);
+        sixthAnchorFirstPane.setStyle("-fx-background-color: white;");
+        sixthAnchor.getChildren().add(sixthAnchorFirstPane);
+
+        // Main-Objects
 
         // Rectangle, Controls and Effect
         Rectangle rectangle = new Rectangle();
@@ -197,10 +211,6 @@ public class Main extends Application {
         Button rectEffButton = new Button("Rotate");
         RotateTransition rectEff = new RotateTransition(Duration.seconds(4), rectangle);
 
-        // Text
-        Pane textBox;
-        AnchorPane textMain;
-
         // Text, Controls and Effect
         Text text = new Text();
         ColorPicker textColor = new ColorPicker(Color.GREEN);
@@ -209,10 +219,6 @@ public class Main extends Application {
         Text textEffText = new Text("Effekt");
         Reflection textEff = new Reflection();
         Button textEffButton = new Button("Reflect");
-
-        // Circle
-        Pane circBox;
-        AnchorPane circMain;
 
         // Circle, Controls and Effect
         Circle circle = new Circle();
@@ -225,6 +231,131 @@ public class Main extends Application {
                 new KeyFrame(Duration.seconds(3), new KeyValue(circle.centerXProperty(), 0)),
                 new KeyFrame(Duration.seconds(4), new KeyValue(circle.centerXProperty(), 150))
         );
+
+        // Rectangle
+        // Sets sizes/position for controls and adds effect
+        rectColor.setPrefSize(140, 27);
+        rectColor.setLayoutX(141);
+        rectColor.setLayoutY(61);
+
+        rectWidthSpinner.setPrefSize(140, 27);
+        rectWidthSpinner.setLayoutX(141);
+        rectWidthSpinner.setLayoutY(97);
+
+        rectHeightSpinner.setPrefSize(140, 27);
+        rectHeightSpinner.setLayoutX(141);
+        rectHeightSpinner.setLayoutY(133);
+
+        rectEffText.setFont(new Font(23));
+        rectEffText.setFill(Color.WHITE);
+        rectEffText.setLayoutX(120);
+        rectEffText.setLayoutY(210);
+
+        rectEff.setFromAngle(0.0);
+        rectEff.setToAngle(360.0);
+
+        rectEffButton.setTextFill(Color.GRAY);
+        rectEffButton.setLayoutX(120);
+        rectEffButton.setLayoutY(230);
+        rectEffButton.setOnMouseClicked(mouseEvent -> rectEff.play());
+
+        // Adds Controls to right pane
+        firstAnchor.getChildren().addAll(rectColor, rectWidthSpinner, rectHeightSpinner, rectEffText, rectEffButton);
+
+        // Sets Rectangle position and binds values to controls
+        rectangle.setLayoutX(50);
+        rectangle.setLayoutY(50);
+        rectangle.widthProperty().bind(rectWidthSpinner.valueProperty());
+        rectangle.heightProperty().bind(rectHeightSpinner.valueProperty());
+        rectangle.fillProperty().bind(rectColor.valueProperty());
+
+        // Adds Rectangle to pane
+        secondAnchorFirstPane.getChildren().add(rectangle);
+
+        // Text
+        // Sets sizes/position for controls and adds effect
+        textColor.setPrefSize(140, 27);
+        textColor.setLayoutX(141);
+        textColor.setLayoutY(61);
+
+        fontBox.setPrefSize(140, 27);
+        fontBox.setLayoutX(141);
+        fontBox.setLayoutY(97);
+        // Adds items to ChoiceBox
+        fontBox.getItems().addAll(Font.getFontNames());
+        // Listens to changes in ChoiceBox and changes text font
+        fontBox.valueProperty().addListener((observableValue, s, t1) -> text.setFont(new Font(fontBox.getValue(), 30)));
+
+        styleBox.setPrefSize(140, 27);
+        styleBox.setLayoutX(141);
+        styleBox.setLayoutY(133);
+        // Adds items to ChoiceBox
+        styleBox.getItems().addAll("Italic", "Normal");
+        // Listens to changes in ChoiceBox and changes text style
+        styleBox.valueProperty().addListener((observableValue, s, t1) -> text.setStyle("-fx-font-style: " + styleBox.getValue()));
+
+        textEffText.setFont(new Font(23));
+        textEffText.setFill(Color.WHITE);
+        textEffText.setLayoutX(120);
+        textEffText.setLayoutY(210);
+
+        textEffButton.setTextFill(Color.GRAY);
+        textEffButton.setLayoutX(120);
+        textEffButton.setLayoutY(230);
+        textEffButton.setOnMouseClicked(mouseEvent -> {
+            if (text.getEffect() == null) {
+                text.setEffect(textEff);
+                textEffButton.setText(" Stop ");
+            } else {
+                text.setEffect(null);
+                textEffButton.setText("Reflect");
+            }
+        });
+
+        // Adds Controls to right pane
+        thirdAnchor.getChildren().addAll(fontBox, textColor, styleBox, textEffText, textEffButton);
+
+        // Sets Text position, size and text and binds color-value to controls
+        text.setFont(new Font(30));
+        text.setText("Hello");
+        text.setLayoutX(130);
+        text.setLayoutY(100);
+        text.fillProperty().bind(textColor.valueProperty());
+
+        // Adds text to pane
+        fourthAnchorFirstPane.getChildren().add(text);
+
+        // Circle
+        // Sets sizes/position for controls and adds effect
+        circColor.setPrefSize(140, 27);
+        circColor.setLayoutX(141);
+        circColor.setLayoutY(61);
+
+        circRadiusSpinner.setPrefSize(140, 27);
+        circRadiusSpinner.setLayoutX(141);
+        circRadiusSpinner.setLayoutY(97);
+
+        circEffText.setFont(new Font(23));
+        circEffText.setFill(Color.WHITE);
+        circEffText.setLayoutX(120);
+        circEffText.setLayoutY(175);
+
+        circEffButton.setTextFill(Color.GRAY);
+        circEffButton.setLayoutX(125);
+        circEffButton.setLayoutY(195);
+        circEffButton.setOnMouseClicked(mouseEvent -> circEff.play());
+
+        // Adds Controls to right pane
+        fifthAnchor.getChildren().addAll(circColor, circRadiusSpinner, circEffText, circEffButton);
+
+        // Sets Circle position and binds values to controls
+        circle.setCenterX(150);
+        circle.setCenterY(100);
+        circle.radiusProperty().bind(circRadiusSpinner.valueProperty());
+        circle.fillProperty().bind(circColor.valueProperty());
+
+        // Adds circle to pane
+        sixthAnchorFirstPane.getChildren().add(circle);
 
         Scene scene = new Scene(root, root.getPrefWidth(), root.getPrefHeight());
         primaryStage.setResizable(false);
